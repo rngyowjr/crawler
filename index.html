@@ -8,10 +8,8 @@
             ctx.fillRect(x * 20, y * 20, w * 20 - 1, h * 20 - 1)
         }
 
-
         //Time Controls
         setInterval(tick, 125)
-
 
         //Initial State
         player_x = 25
@@ -22,11 +20,9 @@
         missile_y = [29]
         game_over = 0
 
-
         //Velocities
         snake_velocity = 1
         missile_velocity = [-1]
-
 
         //Update Function
         function update() {
@@ -35,7 +31,6 @@
                 missile_y[i] = missile_y[i] + missile_velocity[i]
             }
         }
-
 
         //Constraint Function
         function constraint() {
@@ -153,7 +148,6 @@
             rect(snake_x, snake_y, 1, 1, 'green')
         }
 
-
         //Tick Function
         function tick() {
             if (game_over == 0) {
@@ -163,10 +157,10 @@
             }
         }
 
-
         //Keydown Function
         function keydown(event) {
             key = event.key
+
             if (key == 'r') {
                 console.log("r")
                 for (i = 0; i < missile_shot.length; i++) {
@@ -181,6 +175,7 @@
                     game_over = 0
                 }
             }
+
             if (game_over == 0) {
                 if (key == 'ArrowDown') {
                     console.log("arrow down")
