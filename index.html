@@ -75,6 +75,7 @@
                     }
                 }
             }
+
             if (snake_x == 49) {
                 for (i = 0; i < missile_y.length; i++) {
                     if (snake_y == missile_y[i] + 1) {
@@ -85,6 +86,7 @@
                     }
                 }
             }
+
             if (snake_x == 2) {
                 for (i = 0; i < missile_y.length; i++) {
                     if (snake_y == missile_y[i] + 1) {
@@ -95,6 +97,7 @@
                     }
                 }
             }
+
             //Makes missile stop on collision
             for (i = 0; i < missile_velocity.length; i++) {
                 if (snake_y == -1) {
@@ -161,7 +164,7 @@
         function keydown(event) {
             key = event.key
 
-            if (key == 'r') {
+            if (key == 'r' && game_over !== 0) {
                 console.log("r")
                 for (i = 0; i < missile_shot.length; i++) {
                     player_x = 25
