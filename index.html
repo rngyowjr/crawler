@@ -18,7 +18,7 @@
         let missile_shot = [0]
         let missile_x = [player_x]
         let missile_y = [29]
-        let game_over = 0
+        let game_over = 3
 
         //Velocities
         let snake_velocity = 1
@@ -163,7 +163,22 @@
         function keydown(event) {
             key = event.key
 
-            if (key === 'r' && game_over !== 0) {
+            if (key === ' ' && game_over === 3) {
+                console.log("start")
+                player_x = 25
+                snake_x = 1
+                snake_y = 1
+                missile_shot = [0]
+                missile_x = [player_x]
+                missile_y = [29]
+                snake_velocity = 1
+                missile_velocity = [-1]
+                game_over = 0
+                constraint()
+                draw()
+            }
+
+            if (key === 'r' && (game_over === 1) || (game_over === 2)) {
                 console.log("r")
                 player_x = 25
                 snake_x = 1
@@ -174,6 +189,8 @@
                 snake_velocity = 1
                 missile_velocity = [-1]
                 game_over = 0
+                constraint()
+                draw()
             }
 
             if (game_over === 0) {
@@ -194,10 +211,33 @@
                     missile_velocity.push(-1)
                     missile_shot.push(1)
                 }
+                constraint()
+                draw()
             }
-            constraint()
-            draw()
         }
+
+        //Start Page
+        if (game_over === 3) {
+             //Background
+            rect(1, 1, 50, 30, 'grey')
+            //Left wall
+            rect(1, 1, 1, 30, 'black')
+            //Right wall
+            rect(50, 1, 1, 30, 'black')
+            //Floor
+            rect(1, 30, 50, 1, 'black')
+            //Ceiling
+            rect(1, 1, 50, 1, 'black')
+            //Welcome Message
+            rect(17, 11, 19, 8, 'grey')
+            ctx.font = "40px Arial";
+            ctx.fillStyle = "gold"
+            ctx.fillText("Welcome to Crawler!", 310, 220);
+            ctx.fillText("Use the Left and Right Arrows to move", 160, 270);
+            ctx.fillText("Use the Spacebar to Shoot", 260, 320);
+            ctx.fillText("Ready to play?", 360, 410);
+            ctx.fillText("Just Hit Space Bar to Begin", 240, 460);
+        };
         document.addEventListener('keydown', keydown);
     </script>
 </body>
