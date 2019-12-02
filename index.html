@@ -9,12 +9,12 @@
         }
 
         //Time Controls
-        setInterval(tick, 100)
+        setInterval(tick, 75)
 
         //Initial State
         let player_x = 25
         let snake_x = 1
-        let snake_y = 1
+        let snake_y = 2
         let missile_shot = [0]
         let missile_x = [player_x]
         let missile_y = [29]
@@ -41,7 +41,7 @@
                 snake_velocity = -1
             }
             //Makes snake go down and move right at left wall
-            if (snake_x === 1) {
+            if (snake_x === 1 && snake_y !== 2) {
                 snake_y = snake_y + 1
                 snake_x = 2
                 snake_velocity = 1
@@ -55,11 +55,8 @@
             //Makes missiles disappear
             for (i = 0; i < missile_y.length; i++) {
                 if (missile_y[i] === 1) {
-                    // missile_y[i] = -1
-                    // missile_x[i] = -1
                     missile_velocity[i] = 0
                     missile_shot[i] = 0
-
                 }
             }
             //Keeps player in the field
@@ -156,7 +153,7 @@
         //Tick Function
         function tick() {
             if (game_over === 0) {
-                // update()
+                update()
                 constraint()
                 draw()
             }
