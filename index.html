@@ -163,21 +163,6 @@
         function keydown(event) {
             key = event.key
 
-            if (key === ' ' && game_over === 3) {
-                console.log("start")
-                player_x = 25
-                snake_x = 1
-                snake_y = 1
-                missile_shot = [0]
-                missile_x = [player_x]
-                missile_y = [29]
-                snake_velocity = 1
-                missile_velocity = [-1]
-                game_over = 0
-                constraint()
-                draw()
-            }
-
             if (key === 'r' && (game_over === 1) || (game_over === 2)) {
                 console.log("r")
                 player_x = 25
@@ -211,6 +196,21 @@
                     missile_velocity.push(-1)
                     missile_shot.push(1)
                 }
+                constraint()
+                draw()
+            }
+
+            if (key === ' ' && game_over === 3) {
+                console.log("start")
+                player_x = 25
+                snake_x = 1
+                snake_y = 1
+                missile_shot = [0]
+                missile_x = [player_x]
+                missile_y = [29]
+                snake_velocity = 1
+                missile_velocity = [-1]
+                game_over = 0
                 constraint()
                 draw()
             }
